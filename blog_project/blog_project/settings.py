@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
         # project apps
     'blog.apps.BlogConfig',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -54,6 +56,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'blog_project.urls'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR/"static"]
+STATIC_ROOT = BASE_DIR/"staticfiles"
+STATIC_STORAGE = 'django.contribe.staticfiles.storage.StaticFilesStorage'
 
 TEMPLATES = [
     {
@@ -120,8 +127,8 @@ LOGOUT_REDIRECT_URL = "home"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR/"static"]
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
