@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # local apps
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
+    "articles.apps.ArticlesConfig",
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,14 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DEFAULT_FROM_EMAIL = "your_custom_email_account"
+EMAIL_HOST = "smtp.c1.liara.email"
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = "sendgrid_password"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 WSGI_APPLICATION = "newpaper_project.wsgi.application"
 
